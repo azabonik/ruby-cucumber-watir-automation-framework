@@ -10,7 +10,7 @@ Dotenv.load('.env') # loads environment variables from .env file
 
 World(PageObject::PageFactory)
 @default_driver = 'chrome'
-run_dir = FileUtils.mkdir_p("testartifacts/Automation_build_#{Time.new.localtime.strftime('%F_%H_%M_%S')}")
+run_dir = FileUtils.mkdir_p("test_artifacts/Automation_build_#{Time.new.localtime.strftime('%F_%H_%M_%S')}")
 value = run_dir.to_s
 $VALUE = value[2..-3]
 
@@ -40,7 +40,8 @@ def setup_language_resources
   when 'italian'
     I18n.locale = :it
   else
-    abort("Incorrect language set, cannot continue the test run: supported are 'english', 'italian' or 'spanish'")
+    puts 'No language set, defaulting to English'
+    I18n.locale = :en
   end
 end
 
